@@ -67,6 +67,7 @@ export default function AllInputs({
   options,
   onChangeHandler,
   otherStyle,
+  fieldItem
 }: AllInputsProps) {
   
   const [showPassword, setShowPassword] = React.useState(false);
@@ -159,8 +160,8 @@ export default function AllInputs({
         <InputLabel>{label}</InputLabel>
         <Select
           label={label}
-          value={value ?? ''}
-          onChange={(e: SelectChangeEvent) => onChangeHandler?.(e.target.value)}
+        value={field?.value ? field?.value : fieldItem?.value } 
+        onChange={(e) => onChangeHandler(field_id, e.target.value)} 
         >
           {options?.map((item) => (
             <MenuItem key={item.value} value={item.value}>
@@ -168,6 +169,7 @@ export default function AllInputs({
             </MenuItem>
           ))}
         </Select>
+              {errors && <>{ errors[field_id] && <p className='text-psm text-red-500'>{errors[field_id].message}</p>}</>} 
       </FormControl>
     );
   }
@@ -212,6 +214,31 @@ if (inputType == 'textarea'){
   </Box>
   )
  }
+ // ---------------- DATE INPUT ----------------
+if (inputType === 'date') {
+  return (
+    <div className="w-full">
+      <TextField
+        {...field}
+        fullWidth
+        label={label}
+        type="date"
+        variant="outlined"
+        size="small"
+        InputLabelProps={{ shrink: true }}  
+        sx={{
+          ...customStyle,
+          ...otherStyle,
+        }}
+      />
+
+      {errors[field_id] && (
+        <p className="text-psm text-red-500">{errors[field_id]?.message}</p>
+      )}
+    </div>
+  );
+}
+
   // ---------------- DEFAULT TEXTFIELD ----------------
   return (
     <div className="w-full">

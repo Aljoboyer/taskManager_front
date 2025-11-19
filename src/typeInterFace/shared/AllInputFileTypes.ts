@@ -9,7 +9,7 @@ export type InputType =
   | 'password'
   | 'search'
   | 'number'
-  | 'select' | 'textarea';
+  | 'select' | 'textarea' | 'date';
 
 export interface SelectOption {
   label: string;
@@ -27,7 +27,8 @@ export interface AllInputsProps {
   errors?: any;
 
   options?: SelectOption[];
-  onChangeHandler?: (value: any) => void;
+  onChangeHandler?:  any;
 
   otherStyle?: SxProps<Theme>;
+  fieldItem: any
 }

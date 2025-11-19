@@ -16,11 +16,12 @@ const TasksOperation = () => {
     handleSubmit,
     control,
     setError,
+    setValue ,
     formState: { errors },
   } = useForm();
 
   const onSubmit = async (data: any) => {
-
+    console.log('check here ===>', data)
   }
 
   return (
@@ -51,6 +52,14 @@ const TasksOperation = () => {
                             errors={errors}
                             placeholder={fieldItem?.placeholder}
                             inputType={fieldItem?.inputType}
+                            options={fieldItem?.options}
+                            fieldItem={fieldItem}
+                            onChangeHandler={(id: any , value: any) => {
+                                if(fieldItem?.inputType == 'select' || fieldItem?.inputType == 'autocomplete'){
+                                  setValue(`${id}`, value)
+                                  setError(`${id}`, { type: "custom", message: "" });
+                                }
+                            } }
                             />
                         )}
                       />
