@@ -3,11 +3,13 @@ import LayoutContainer from '../../../components/dashboard_layout/LayoutContaine
 import TaskCard from '../../../components/taskCard/TaskCard'
 import TaskPagination from '../../../components/shared/TaskPagination/TaskPagination';
 import AppText from '../../../components/shared/Texts/AppText';
+import ConfirmationPopup from '../../../components/shared/Modals/ConfirmationPopup';
 
 export default function Tasks(): JSX.Element {
   const [page, setPage] = useState(1);
   const [perPage, setPerPage] = useState(10);
-  
+  const [deleteConfirmModalShow, setDeleteConfirmModalShow] = useState(false)
+
   const handlePageChange = (value: any) => {
     setPage(value);
   };
@@ -40,7 +42,7 @@ export default function Tasks(): JSX.Element {
               status="Completed"
               priority="low"
               created_at={new Date().toISOString()}
-              onDelete={() => {}}
+              onDelete={() => setDeleteConfirmModalShow(true)}
               onEdit={() => {}}
               onView={() => {}}
             />
@@ -53,6 +55,12 @@ export default function Tasks(): JSX.Element {
               handlePageChange={handlePageChange}
               totalPage={10} />
         </div>
+      <ConfirmationPopup 
+      open={deleteConfirmModalShow} setOpen={setDeleteConfirmModalShow}
+      note={"Are you sure you want to delete this task?"}
+      confirmHandler={() => setDeleteConfirmModalShow(false)}
+      // loading={isLoading}
+      />
       </div>
 
     </LayoutContainer>
