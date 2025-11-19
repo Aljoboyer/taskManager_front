@@ -1,7 +1,6 @@
 import React, { useState, type JSX } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
-// import { useLogInMutation } from "../../redux/features/authApi";
 import { errorToast, successToast } from "../../utils/toaster/toaster";
 import { authFormFields } from "./authFormConfigs";
 import AllInputs from "../../components/shared/inputs/AllInput";
@@ -9,9 +8,11 @@ import { COLORS } from "../../theme/colors";
 import AppText from "../../components/shared/Texts/AppText";
 import { authErrorchecker } from "../../helperFunc/authErrorChecker";
 import { Buttons } from "../../components/shared/buttons/Buttons";
+import { SiTask } from "react-icons/si";
+import { useLogInMutation } from "../../redux/features/authApi";
 
 export default function Login(): JSX.Element {
-  // const [useLoginHandler, { }] = useLogInMutation();
+  const [useLoginHandler, { }] = useLogInMutation();
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
 
@@ -24,37 +25,38 @@ export default function Login(): JSX.Element {
 
   const onSubmit = async (data: any) => {
     setLoading(true)
-    // let response = await useLoginHandler(data);
+    let response: any = await useLoginHandler(data);
     
-    // console.log('response ===>', response)
-    // if(response?.data?.token){
+    if(response?.data?.token){
    
-    //   localStorage.setItem('watchify_user', JSON.stringify(response.data))
-    //   setLoading(false)
-    //   successToast('Successfully LoggedIn!')
-    //   navigate('/')
-    // }
-    // else if(response?.data?.message){
-    //     setLoading(false)
-    //     const checkedData: any = authErrorchecker(response);
+      localStorage.setItem('watchify_user', JSON.stringify(response.data))
+      setLoading(false)
+      successToast('Successfully LoggedIn!')
+      navigate('/')
+    }
+    else if(response?.data?.message){
+        setLoading(false)
+        const checkedData: any = authErrorchecker(response);
   
-    //     setError(checkedData?.field, {...checkedData?.typeObj});
-    // }
-    // else{
-    //   setLoading(false)
-    //   errorToast()
-    // }
+        setError(checkedData?.field, {...checkedData?.typeObj});
+    }
+    else{
+      setLoading(false)
+      errorToast()
+    }
   };
 
   return (
-      // <AuthLayout>
-        <div className="w-full max-w-md">
-          <AppText
-          type="title"
-          text="Login"
-          otherStyle='mb-4 text-maroon'
-          />
-
+      <div className="w-full bg-gray-100 h-screen flex flex-row justify-center items-center px-2 lg:px-0">
+        <div className="w-full md:w-1/2 mx-auto p-4 bg-white rounted-md">
+          <div className="flex flex-col items-center">
+            <SiTask color={COLORS.maroon} size={40}/>
+            <AppText
+            type="title"
+            text="LOG IN TO YOUR ACCOUNT"
+            otherStyle='mb-4 text-maroon'
+            />
+          </div>
           <form className="space-y-4" onSubmit={handleSubmit(onSubmit)} noValidate>
               {
                 authFormFields.slice(2, 4)?.map((fieldItem: any) => (
@@ -89,10 +91,10 @@ export default function Login(): JSX.Element {
         </form>
 
             <p className="text-p text-center mt-4">
-              New to Watchify?{" "}
+              New to Horizon Task Manager ?{" "}
               <span onClick={() => navigate('/register')} className="font-bold text-basecolor cursor-pointer">Create Account</span>
             </p>
         </div>
-      // </AuthLayout>
+      </div>
   );
 }
