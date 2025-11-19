@@ -78,6 +78,7 @@ export default function Register() {
                           field={field}
                           field_id={fieldItem?.field_id}
                           errors={errors}
+                          fieldItem={fieldItem}
                           placeholder={fieldItem?.placeholder}
                           inputType={fieldItem?.inputType}
                           />
@@ -95,7 +96,7 @@ export default function Register() {
 
             <p className="text-p text-center mt-4">
               Already have an account?{" "}
-              <span onClick={() => navigate('/login')} className="font-bold text-basecolor cursor-pointer">Log In</span>
+              <span onClick={() => navigate('/')} className="font-bold text-basecolor cursor-pointer">Log In</span>
             </p>
     </div>
     </div>

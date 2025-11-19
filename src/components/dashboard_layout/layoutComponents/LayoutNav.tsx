@@ -1,7 +1,7 @@
 import React from 'react'
 import Typography from '@mui/material/Typography';
 import Toolbar from '@mui/material/Toolbar';
-import { Avatar, Badge, Box, Button } from '@mui/material';
+import { Badge, Box, Button } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import Logout from '@mui/icons-material/Logout';
 import { Notifications } from '@mui/icons-material';
@@ -9,7 +9,6 @@ import { COLORS } from '../../../theme/colors';
 import ProfileMenu from '../../shared/Menus/ProfileManu';
 
 const manuItems = [
-    // {"label": "Profile", "link": "", "icon": <Avatar fontSize="small" />},
     {"label": "Logout", "link": "", "icon": <Logout fontSize="small"/>},
 ]
 

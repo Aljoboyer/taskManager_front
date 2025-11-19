@@ -7,6 +7,7 @@ import Tooltip from '@mui/material/Tooltip';
 import { Typography, Avatar } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { COLORS } from '../../../theme/colors';
+import { useNavigate } from 'react-router-dom';
 
 interface MenuItemType {
   label: string;
@@ -20,6 +21,7 @@ interface ProfileMenuProps {
 export default function ProfileMenu({ manuItems }: ProfileMenuProps) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+  const navigate = useNavigate();
 
   const handleClick = (event: MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -28,7 +30,8 @@ export default function ProfileMenu({ manuItems }: ProfileMenuProps) {
   const handleClose = (action?: string) => {
     setAnchorEl(null);
     if (action === 'Logout') {
-      // handle logout logic here
+      navigate('/')
+      localStorage.removeItem('tasks_user')
     }
   };
 

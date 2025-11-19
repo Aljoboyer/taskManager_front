@@ -5,20 +5,16 @@ import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
 import Tasks from './pages/dashboard/Tasks/Tasks';
 import TasksOperation from './pages/dashboard/TasksOperation/TasksOperation';
+import AppRoutes from './routes/routes';
 
 function App() {
 
   return (
    <main>
      <Toaster position="top-center" />
-      <Router>
-        <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/dashboard/tasks" element={<Tasks />} />
-          <Route path="/dashboard/create-task" element={<TasksOperation />} />
-        </Routes>
-      </Router>
+        <Router>
+          <AppRoutes />
+        </Router>
    </main>
   )
 }

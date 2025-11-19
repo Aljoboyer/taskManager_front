@@ -24,6 +24,10 @@ export default function Login(): JSX.Element {
   } = useForm();
 
   const onSubmit = async (data: any) => {
+    const storagedata: any = JSON.stringify(data)
+    localStorage.setItem("tasks_user", storagedata)
+     navigate('/dashboard/tasks')
+     return
     setLoading(true)
     let response: any = await useLoginHandler(data);
     
@@ -32,7 +36,7 @@ export default function Login(): JSX.Element {
       localStorage.setItem('watchify_user', JSON.stringify(response.data))
       setLoading(false)
       successToast('Successfully LoggedIn!')
-      navigate('/')
+      navigate('/dashboard/task')
     }
     else if(response?.data?.message){
         setLoading(false)
@@ -59,7 +63,7 @@ export default function Login(): JSX.Element {
           </div>
           <form className="space-y-4" onSubmit={handleSubmit(onSubmit)} noValidate>
               {
-                authFormFields.slice(2, 4)?.map((fieldItem: any) => (
+                authFormFields.slice(1, 3)?.map((fieldItem: any) => (
                   <Controller
                       key={fieldItem?.field_id}
                       name={fieldItem?.field_id}
@@ -75,6 +79,7 @@ export default function Login(): JSX.Element {
                           field={field}
                           field_id={fieldItem?.field_id}
                           errors={errors}
+                          fieldItem={fieldItem}
                           placeholder={fieldItem?.placeholder}
                           inputType={fieldItem?.inputType}
                           />
