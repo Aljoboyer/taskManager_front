@@ -1,8 +1,8 @@
-import { emailRegex, nameRegex, phoneRegex } from "../../utils/const_data/regaxVar";
+import { emailRegex, nameRegex } from "../../utils/const_data/regaxVar";
 
 export const authFormFields =  [
     {
-        field_id: 'name',
+        field_id: 'username',
         label: 'Name',
         placeholder: 'Enter your name',
         required:{
@@ -10,19 +10,6 @@ export const authFormFields =  [
             pattern: {
                 value: nameRegex,
                 message: "Enter name without special character or number",
-            }
-        },
-        inputType: 'textfield'
-    },
-    {
-        field_id: 'phone',
-        label: 'Phone',
-        placeholder: 'Enter your phone',
-         required:{
-            required: 'Enter valid phone number',
-            pattern: {
-                value: phoneRegex,
-                message: "Enter valid phone number",
             }
         },
         inputType: 'textfield'

@@ -1,4 +1,4 @@
-import  React, { useState } from 'react';
+import  React, { useEffect, useState } from 'react';
 import {useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import { useMediaQuery } from '@mui/material';
@@ -9,14 +9,15 @@ export default function LayoutContainer({children}: any) {
   const theme = useTheme();
   const isLargeScreen = useMediaQuery(theme.breakpoints.up('lg')); 
 
-  const [open, setOpen] = React.useState(isLargeScreen);
+  const [open, setOpen] = useState(isLargeScreen);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setOpen(isLargeScreen);
   }, [isLargeScreen]);
 
   const handleDrawerOpen = () => {
-    setOpen(!open);
+    console.log('clicked')
+    setOpen(true);
   };
 
   const handleDrawerClose = () => {

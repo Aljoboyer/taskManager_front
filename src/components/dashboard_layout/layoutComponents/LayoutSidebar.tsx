@@ -101,11 +101,11 @@ const LayoutSidebar: React.FC<LayoutSidebarProps> = ({
               sx={{
                 marginTop: '6px',
                 borderRadius: '8px',
-                backgroundColor: COLORS.baseColor,
-                '&:hover': { backgroundColor: COLORS.overlay },
+                backgroundColor: COLORS.bluemain,
+                '&:hover': { backgroundColor: COLORS.maroon },
               }}
             >
-              <ListItemIcon sx={{ minWidth: '0px', color: COLORS.maroon }}>
+              <ListItemIcon sx={{ minWidth: '0px', color: COLORS.white }}>
                 {item.icon}
               </ListItemIcon>
 
@@ -121,7 +121,6 @@ const LayoutSidebar: React.FC<LayoutSidebarProps> = ({
           </ListItem>
         ))}
 
-        <Divider sx={{ marginY: '80px' }} />
       </List>
     </Drawer>
   );

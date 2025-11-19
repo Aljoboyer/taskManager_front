@@ -15,6 +15,10 @@
   --color-grey600: #4b5565;
   --color-grey700: #364152;
   --color-grey900: #121926;
+  --color-blueOverlay: #e3f2fd;
+  --color-bluemain: #4c96f3;
+  --color-successOverlay: #b9f6ca;
+  --color-greenMain: #00c853;
 
   /* ----------TEXT SIZE---------- */
   --text-title_xxl: 80px;

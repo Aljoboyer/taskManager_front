@@ -25,13 +25,13 @@ export const LayoutNav = ({handleDrawerOpen}: any) => {
       }}>
       <Toolbar>
           <div  className='hidden md:flex flex-row items-center cursor-pointer '>
-         <Typography  sx={{ fontWeight: 'bold', color: COLORS.baseColor , fontSize: {xs: '18px', md: '24px'}}}>
+         <Typography  sx={{ fontWeight: 'bold', color: COLORS.maroon , fontSize: {xs: '18px', md: '24px'}}}>
           Task
         </Typography>
-        <Typography sx={{ fontWeight: 'bold', color: COLORS.baseColor , fontSize: {xs: '18px', md: '24px'}}}>App</Typography>
+        <Typography sx={{ fontWeight: 'bold', color: COLORS.maroon , fontSize: {xs: '18px', md: '24px'}}}>App</Typography>
        </div>
         <Button
-            onClick={handleDrawerOpen}
+            onClick={() => handleDrawerOpen()}
             sx={{
               display: {lg: 'none'},
               marginLeft: {xsm: '0px', md: '20px'},
