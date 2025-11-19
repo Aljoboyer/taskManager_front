@@ -12,6 +12,9 @@ import {
   TextField,
   type SxProps,
   type Theme,
+  TextareaAutosize,
+  Box,
+  Typography,
 } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import SearchIcon from '@mui/icons-material/Search';
@@ -169,6 +172,46 @@ export default function AllInputs({
     );
   }
 
+if (inputType == 'textarea'){
+  return (
+   <Box
+    sx={{
+      position: 'relative',
+      width: '100%',
+      mt: 2,
+    }}
+  >
+        {/* Floating Label */}
+ 
+      <TextareaAutosize
+              {...field}
+              minRows={3}
+              placeholder={placeholder}
+              style={{
+                ...otherStyle,
+                width: '100%',
+                fontSize: '16px',
+                padding: '14px',
+                border: '1.8px solid rgb(165, 165, 165)',
+                borderRadius: '8px',
+                outline: 'none',
+                resize: 'vertical',
+                transition: 'box-shadow 0.2s ease, border-color 0.2s ease',
+                boxSizing: 'border-box',
+              }}
+              onFocus={(e) => {
+                e.target.style.borderColor = '#7b7b7bff';
+                e.target.style.boxShadow = '0 0 0 3px rgba(148, 148, 148, 0.2)';
+              }}
+              onBlur={(e) => {
+                e.target.style.borderColor = '#8e8e8eff';
+                e.target.style.boxShadow = 'none';
+              }}
+      />
+       {errors && <>{ errors[field_id] && <p className='text-psm text-red-500'>{errors[field_id].message}</p>}</>}
+  </Box>
+  )
+ }
   // ---------------- DEFAULT TEXTFIELD ----------------
   return (
     <div className="w-full">

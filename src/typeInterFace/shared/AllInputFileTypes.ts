@@ -9,7 +9,7 @@ export type InputType =
   | 'password'
   | 'search'
   | 'number'
-  | 'select';
+  | 'select' | 'textarea';
 
 export interface SelectOption {
   label: string;

@@ -4,6 +4,7 @@ import { Toaster } from "react-hot-toast";
 import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
 import Tasks from './pages/dashboard/Tasks/Tasks';
+import TasksOperation from './pages/dashboard/TasksOperation/TasksOperation';
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/dashboard/tasks" element={<Tasks />} />
+          <Route path="/dashboard/create-task" element={<TasksOperation />} />
         </Routes>
       </Router>
    </main>

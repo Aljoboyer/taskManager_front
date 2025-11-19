@@ -28,7 +28,7 @@ export const authFormFields =  [
         inputType: 'textfield'
     },
     {
-        field_id: 'password',
+        field_id: 'hashed_password',
         label: 'Password',
         placeholder: 'Enter your password',
          required:{

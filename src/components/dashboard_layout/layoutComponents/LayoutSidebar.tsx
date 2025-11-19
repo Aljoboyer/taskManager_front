@@ -11,6 +11,7 @@ import { styled, useTheme } from '@mui/material/styles';
 import CloseIcon from '@mui/icons-material/Close';
 import { COLORS } from '../../../theme/colors';
 import { sideManuList } from '../../../utils/const_data/sideManuList';
+import { useNavigate } from 'react-router-dom';
 
 interface MenuItemType {
   title: string;
@@ -39,7 +40,8 @@ const LayoutSidebar: React.FC<LayoutSidebarProps> = ({
   const isLargeScreen = useMediaQuery(theme.breakpoints.up('lg'));
   const isMediumScreen = useMediaQuery(theme.breakpoints.up('md'));
   const isXtraScreen = useMediaQuery(theme.breakpoints.up('xl'));
-
+  const navigate = useNavigate();
+  
   const drawerWidth = isXtraScreen && !open
     ? '4%'
     : isXtraScreen && open
@@ -103,6 +105,9 @@ const LayoutSidebar: React.FC<LayoutSidebarProps> = ({
                 borderRadius: '8px',
                 backgroundColor: COLORS.bluemain,
                 '&:hover': { backgroundColor: COLORS.maroon },
+              }}
+              onClick={() => {
+                navigate(item.link)
               }}
             >
               <ListItemIcon sx={{ minWidth: '0px', color: COLORS.white }}>
