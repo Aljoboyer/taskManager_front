@@ -1,6 +1,6 @@
 Task Management App
 
-A simple and secure Task Management Application built with React + Vite, featuring full user authentication, task management (CRUD), and a clean UI powered by TailwindCSS, Material UI (MUI), and Redux Toolkit.
+A simple and secure Task Management Application built with React + Typescript + Vite, featuring full user authentication, task management (CRUD), and a clean UI powered by TailwindCSS, Material UI (MUI), and Redux Toolkit.
 Only authenticated users can access the dashboard, ensuring a protected and structured workflow.
 
 🚀 Project Description
